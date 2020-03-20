@@ -1,0 +1,11 @@
+<h1>Followed Topics</h1>
+
+<div>
+  <% if @followed_topics.empty? %>
+    <p>No Topic Followed</p>
+  <% else %>
+    <% @followed_topics.each do |user| %>
+      <p><%= user.followable.content %></p>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<h1>Answer</h1>
+<div>
+  <p><b>Question: </b> <%= @question.content %></p>
+  <p><b>Answer: </b> <%= @answer.content %></p>
+  <p><b>Answer By: </b> <%= @answer.user.email %></p>
+</div>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>

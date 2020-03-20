@@ -1,0 +1,32 @@
+<h1>Topics</h1>
+
+<div>
+  <% if @topics.empty? %>
+    <p>No Topic Available</p>
+  <% else %>
+    <table>
+      <thead>
+        <th>Topic</th>
+        <th>Created_by</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @topics.each do |topic| %>
+          <tr>
+            <td><%= link_to topic.content, topic %></td>
+            <td><%= topic.user.email %></td>
+            <% if topic.user_id == current_user.id %>
+              <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+              <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>
+</div>
+<br>
+
+<%= link_to 'New Topic', new_topic_path %>

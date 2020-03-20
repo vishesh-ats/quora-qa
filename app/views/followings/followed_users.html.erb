@@ -1,0 +1,11 @@
+<h1>Followed Users</h1>
+
+<div>
+  <% if @followed_users.empty? %>
+    <p>No User Followed</p>
+  <% else %>
+    <% @followed_users.each do |user| %>
+      <p><%= user.followable.email %></p>  
+    <% end %>
+  <% end %>
+</div>

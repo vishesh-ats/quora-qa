@@ -1,0 +1,13 @@
+<%= form_with(model: answer, local: true) do |form| %>
+  <div>
+    <p><b>Question: </b><%= @question.content %></p>
+    <br/>
+    <%= form.label "Answer" %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.hidden_field :question_id, value: @question.id %>
+  <br/>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

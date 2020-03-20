@@ -1,0 +1,7 @@
+<h1>Question</h1>
+<div>
+  <p><b>Question: </b> <%= @question.content %></p>
+  <p><b>Ask By: </b> <%= @question.user.email %></p>
+</div>
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

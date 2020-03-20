@@ -1,0 +1,9 @@
+<h1>Topic</h1>
+
+<div>
+  <p><b>Name: </b><%= @topic.content %></p>
+  <p><b>Created By: </b><%= @topic.user.email %></p>
+</div>
+
+<%= link_to 'Edit', edit_topic_path(@topic) if @topic.user_id == current_user.id %> |
+<%= link_to 'Back', topics_path %>

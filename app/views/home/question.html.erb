@@ -1,0 +1,18 @@
+<h1>Question</h1>
+<div>
+  <h3><%= @question.content %></h3>
+  <p><b>Answers: </b></p>
+  <% if @question.answers.empty? %>
+    <p>No Answers Available</p>
+  <% else %>
+    <% @question.answers.each_with_index do |answer, index| %>
+      <div>
+        <%= "#{index+1}) " %><span class="answer"><%= answer.content %></span>
+        <%= "(Answer By: #{answer.user.email})" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<br/>
+<%= link_to 'Answer this question', new_answer_path(question_id: @question.id) %> |
+<%= link_to 'Back', root_path %>

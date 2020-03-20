@@ -1,0 +1,13 @@
+<%= form_with(model: question, local: true) do |form| %>
+  <div>
+    <%= form.label "Question" %>
+    <%= form.text_area :content %>
+    <br/>
+    <%= label_tag "Add Topic" %>
+    <%= text_field_tag :topic %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

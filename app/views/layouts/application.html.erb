@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>QuoraQa</title>
+    <title>Quora Qa</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +10,10 @@
   </head>
 
   <body>
+    <h1>Quora QA</h1>
     <% flash.each do |key, value| %>
       <% if key == 'notice' %>
-        <p class="notice"><b><%= value %></b></p>
+        <p id="notice"><b><%= value %></b></p>
       <% else %>
         <p class="error-exp"><%= value %></p>
       <% end %>
@@ -21,9 +22,16 @@
     <%= link_to 'Home', root_path %>
     <% if user_signed_in? %>
       | <%= link_to "Welcome.. #{current_user.email}", '' %>
+      | <%= link_to "Signout", destroy_user_session_path, method: :delete %>
+      | <%= link_to "Followed Users", followed_users_path %>
+      | <%= link_to "Followed Topics", followed_topics_path %>
     <% else %>
       | <%= link_to 'Login', new_user_session_path, class: 'login' %>
     <% end %>
+    | <%= link_to 'Questions', questions_path, class: 'question' %>
+    | <%= link_to 'Ask Questions', new_question_path, class: 'question' %>
+    | <%= link_to 'Answers', answers_path, class: 'answer' %>
+    | <%= link_to 'Topics', topics_path, class: 'topic' %>
     <%= yield %>
   </body>
 </html>

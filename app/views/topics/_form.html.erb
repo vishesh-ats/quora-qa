@@ -1,0 +1,10 @@
+<%= form_with(model: topic, local: true) do |form| %>
+  <div>
+    <%= form.label 'Topic' %>
+    <%= form.text_field :content %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>Questions</h1>
+<div>
+  <% if @questions.empty? %>
+    <p>No Question</p>
+  <% else %>
+    <table>
+      <thead>
+        <th>Question</th>
+        <th>Ask By</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= link_to question.content, home_question_path(question), class: 'question' %></td>
+          <td><%= question.user.email %></td>
+          <td><%= link_to "Follow #{question.user.email}", follow_user_path(question.user), class: 'follow_user' %></td>
+          <td><%= link_to "Answer this question", new_answer_path(question_id: question.id) %></td>
+          <td>
+            <% question.topics.each do |topic| %>
+              <p><%= link_to "Follow #{topic.content}", follow_topic_path(topic), class: 'follow_topic' %></p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>  
+      </tbody>
+    </table>
+  <% end %>
+</div>

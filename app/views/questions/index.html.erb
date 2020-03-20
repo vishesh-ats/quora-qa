@@ -1,0 +1,30 @@
+<h1>Questions</h1>
+
+<div>
+  <% if @questions.empty? %>
+    <p>No Question</p>
+  <% else %>
+    <table>
+      <thead>
+        <th>Question</th>
+        <th>Ask By</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @questions.each do |question| %>
+          <tr>
+            <td><%= link_to question.content, question_path(question), class: 'question' %></td>
+            <td><%= question.user.email %></td>
+            <td><%= link_to 'Edit', edit_question_path(question) %></td>
+            <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>
+</div>
+<br/>
+
+<%= link_to 'Add Question', new_question_path %>
