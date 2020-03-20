@@ -32,7 +32,7 @@ class TopicsController < ApplicationController
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
-        format.html { render :new }
+        format.html { redirect_to new_topic_path, notice: @topic.errors.full_messages.to_sentence }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class TopicsController < ApplicationController
         format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
         format.json { render :show, status: :ok, location: @topic }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_topic_path(@topic), notice: @topic.errors.full_messages.to_sentence }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end

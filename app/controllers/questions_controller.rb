@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
-        format.html { render :new }
+        format.html { redirect_to new_question_path, notice: @question.errors.full_messages.to_sentence }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_question_path(@question), notice: @question.errors.full_messages.to_sentence }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end

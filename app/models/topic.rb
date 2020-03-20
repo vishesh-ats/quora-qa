@@ -6,7 +6,7 @@ class Topic < ApplicationRecord
   
   has_many :followings, as: :followable
   
-  validates :content, presence: true
+  validates :content, presence: true, uniqueness: true
   
   def self.set_topic(question, topics, current_user)
     topics = topics.split(',')

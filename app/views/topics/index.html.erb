@@ -17,7 +17,7 @@
           <tr>
             <td><%= link_to topic.content, topic %></td>
             <td><%= topic.user.email %></td>
-            <% if topic.user_id == current_user.id %>
+            <% if user_signed_in? && topic.user_id == current_user.id %>
               <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
               <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
