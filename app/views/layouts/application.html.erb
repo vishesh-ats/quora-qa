@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+      <% if key == 'notice' %>
+        <p class="notice"><b><%= value %></b></p>
+      <% else %>
+        <p class="error-exp"><%= value %></p>
+      <% end %>
+    <% end %>
+    <br/>
+    <%= link_to 'Home', root_path %>
+    <% if user_signed_in? %>
+      | <%= link_to "Welcome.. #{current_user.email}", '' %>
+    <% else %>
+      | <%= link_to 'Login', new_user_session_path, class: 'login' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
