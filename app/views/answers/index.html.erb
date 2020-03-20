@@ -6,6 +6,7 @@
   <% else %>
     <table>
       <thead>
+      <th>Question</th>
       <th>Answer</th>
       <th>Answer By</th>
       <th></th>
@@ -15,6 +16,7 @@
       <tbody>
       <% @answers.each do |answer| %>
         <tr>
+          <td><%= answer.question.content %></td>
           <td><%= link_to answer.content, answer_path(answer), class: 'answer' %></td>
           <td><%= answer.user.email %></td>
           <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
